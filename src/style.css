@@ -1,1 +1,42 @@
+* {
+  box-sizing: border-box;
+}
 
+h1 {
+  margin-left: 50px;
+}
+
+.scoreList {
+  list-style: none;
+  border: 1px solid black;
+}
+
+.scoreList > li:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.boardBody {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+}
+
+.scoreHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.displayScores {
+  width: 20%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#submit {
+  margin-left: 100px;
+}
