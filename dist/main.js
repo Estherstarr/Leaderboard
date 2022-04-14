@@ -110,13 +110,23 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/apiCall.js":
+/*!************************!*\
+  !*** ./src/apiCall.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addScore\": () => (/* binding */ addScore),\n/* harmony export */   \"getScore\": () => (/* binding */ getScore)\n/* harmony export */ });\nconst BASE_URL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';\nconst gameId = 'NNXc3sdSVF8DDdgF2E1z';\n\nconst addScore = async (name, score) => {\n  await fetch(`${BASE_URL}${gameId}/scores`, {\n    method: 'POST',\n    body: JSON.stringify({\n      user: name,\n      score,\n    }),\n    headers: {\n      'Content-type': 'application/json; charset=UTF-8',\n    },\n  }).then((res) => res.json());\n};\n\nconst getScore = async () => {\n  let data;\n  await fetch(`${BASE_URL}${gameId}/scores`).then((res) => res.json()).then((res) => { data = res; });\n  return data;\n};\n\n\n//# sourceURL=webpack://Leaderboard/./src/apiCall.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n\n\n//# sourceURL=webpack://Leaderboard/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _apiCall_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./apiCall.js */ \"./src/apiCall.js\");\n\n\n\nconst refreshBtn = document.getElementById('refresh');\nconst form = document.getElementById('form');\nconst scoresList = document.querySelector('.scoreList');\nconst name = document.getElementById('name');\nconst score = document.getElementById('score');\nconst loadScores = () => {\n  (0,_apiCall_js__WEBPACK_IMPORTED_MODULE_1__.getScore)().then((data) => {\n    const scores = data.result;\n    scoresList.innerHTML = '';\n    scores.forEach((item) => {\n      scoresList.innerHTML += `<li>${item.user}: ${item.score}</li>`;\n    });\n  });\n};\n\nrefreshBtn.addEventListener('click', () => {\n  loadScores();\n});\n\nwindow.addEventListener('load', () => {\n  loadScores();\n});\n\nform.addEventListener('submit', async (e) => {\n  const success = document.querySelector('.success');\n  e.preventDefault();\n  await (0,_apiCall_js__WEBPACK_IMPORTED_MODULE_1__.addScore)(name.value, score.value).then(() => {\n    success.textContent = `${name.value}'s score added successfully!`;\n    setTimeout(() => {\n      success.textContent = '';\n    }, 2500);\n  });\n  form.reset();\n  loadScores();\n});\n\n\n//# sourceURL=webpack://Leaderboard/./src/index.js?");
 
 /***/ })
 
