@@ -3,31 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    
     <title>Leaderboard</title>
   </head>
   <body>
     <h1>Leaderboard</h1>
     <main class="boardBody">
+
       <section class="displayScores">
         <div class="scoreHeader">
           <h2>Recent scores</h2>
           <div>
+            <span class="rotate-refresh">
+              <i class="fa-solid fa-spinner"></i>
+            </span>
             <button id="refresh" type="button">Refresh</button>
           </div>
         </div>
+
         <ul class="scoreList">
-          <li>Name:100</li>
-          <li>Name:20</li>
-          <li>Name:50</li>
-          <li>Name:78</li>
-          <li>Name:125</li>
-          <li>Name:77</li>
-          <li>Name:42</li>
+          
         </ul>
       </section>
 
-      <section>
+      <section class="addScores">
         <div>
           <h2>Add your score</h2>
         </div>
@@ -48,10 +47,20 @@
             required
           />
           <div>
+            <span class="rotate-submit">
+              <i class="fa-solid fa-spinner"></i>
+            </span>
             <button type="submit" id="submit">Submit</button>
           </div>
         </form>
+        <h4 class="success"></h4>
       </section>
     </main>
   </body>
 </html>
+
+
+
+
+
+
